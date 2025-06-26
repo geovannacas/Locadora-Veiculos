@@ -1,0 +1,9 @@
+package com.poo.domain.enums;
+
+public enum StatusMultaEnum {
+    PENDENTE_IDENTIFICACAO_CONDUTOR,
+    AGUARDANDO_PAGAMENTO_LOCADORA,
+    AGUARDANDO_REEMBOLSO_CLIENTE,
+    FINALIZADA,
+    EM_DISPUTA
+}
