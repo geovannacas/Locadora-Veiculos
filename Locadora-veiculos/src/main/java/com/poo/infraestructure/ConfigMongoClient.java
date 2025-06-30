@@ -1,17 +1,17 @@
 package com.poo.infraestructure;
 
-import com.mongodb.client.*;
 import org.bson.Document;
+import com.mongodb.client.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ConfigMongoClient {
 
-    @Value("${MONGODB_CONN}")
+    @Value("${MONGO_GESTAOLOC_CONN}")
     private String connectionString;
 
-    @Value("${MONGODB_DB_NAME}")
+    @Value("${MONGO_DBNAME}")
     private String databaseName;
 
     private MongoClient mongoClient;
