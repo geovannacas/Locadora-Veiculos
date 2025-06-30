@@ -8,7 +8,6 @@ import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.bson.Document;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +24,7 @@ public class ContratoRepository implements IRepository<Contrato> {
         this.mongoClient.connect();
     }
 
-    public void create(Contrato contrato) {
+    public void Create(Contrato contrato) {
         var collection = mongoClient.getCollection("Contratos");
         Document document = new Document()
                 .append("idCliente", contrato.getIdCliente())
@@ -40,7 +39,7 @@ public class ContratoRepository implements IRepository<Contrato> {
         collection.insertOne(document);
     }
 
-    public void update(Contrato contrato) {
+    public void Update(Contrato contrato) {
         var collection = mongoClient.getCollection("Contratos");
         Document document = new Document()
                 .append("idCliente", contrato.getIdCliente())
@@ -58,12 +57,12 @@ public class ContratoRepository implements IRepository<Contrato> {
         );
     }
 
-    public void delete(String id) {
+    public void Delete(String id) {
         var collection = mongoClient.getCollection("Contratos");
         collection.deleteOne(new Document("_id", new ObjectId(id)));
     }
 
-    public Contrato getById(String id) {
+    public Contrato GetById(String id) {
         var collection = mongoClient.getCollection("Contratos");
         if (collection != null) {
             return mapper.Map(collection.find(new Document("_id", new ObjectId(id))).first());
@@ -71,7 +70,7 @@ public class ContratoRepository implements IRepository<Contrato> {
         return null;
     }
 
-    public Iterable<Contrato> getAll() {
+    public Iterable<Contrato> GetAll() {
         var collection = mongoClient.getCollection("Contratos");
         if (collection != null) {
             var documents = collection.find().into(new ArrayList<>());

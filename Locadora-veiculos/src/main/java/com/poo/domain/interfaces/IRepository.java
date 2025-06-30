@@ -1,12 +1,12 @@
 package com.poo.domain.interfaces;
 
 public interface IRepository<TClass> {
-    void create(TClass entity);
-    void update(TClass entity);
+    void Create(TClass entity);
+    void Update(TClass entity);
 
-    void delete(String id);
+    void Delete(String id);
 
-    TClass getById(String id);
+    TClass GetById(String id);
 
-    Iterable<TClass> getAll();
+    Iterable<TClass> GetAll();
 }
