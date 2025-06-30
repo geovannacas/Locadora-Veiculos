@@ -21,6 +21,9 @@ public class Funcionario extends Pessoa {
     private String senha;
     private NivelAcessoEnum nivelAcesso;
 
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
         return "Funcionário ID: " + id + "\nNome: " + nome + "\nCargo: " + cargo + "\nLogin: " + login;

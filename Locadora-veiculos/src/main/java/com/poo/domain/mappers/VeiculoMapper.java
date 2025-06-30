@@ -8,6 +8,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class VeiculoMapper implements IImuttableMapper<Veiculo> {
+    /** 
+     * @param veiculo
+     * @return Veiculo
+     */
     @Override
     public Veiculo Map(Document veiculo) {
         if (veiculo == null) {

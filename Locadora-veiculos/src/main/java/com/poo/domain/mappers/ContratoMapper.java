@@ -8,6 +8,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ContratoMapper implements IImuttableMapper<Contrato> {
+    /** 
+     * @param data
+     * @return Contrato
+     */
     @Override
     public Contrato Map(Document data) {
         var contrato = new Contrato();

@@ -7,6 +7,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ClienteMapper implements IImuttableMapper<Cliente> {
+    /** 
+     * @param cliente
+     * @return Cliente
+     */
     @Override
     public Cliente Map(Document cliente) {
         if (cliente == null) {

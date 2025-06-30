@@ -8,6 +8,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ManutencaoMapper implements IImuttableMapper<Manutencao> {
+    /** 
+     * @param manutencao
+     * @return Manutencao
+     */
     @Override
     public Manutencao Map(Document manutencao) {
         if (manutencao == null) {
@@ -17,8 +21,8 @@ public class ManutencaoMapper implements IImuttableMapper<Manutencao> {
         var manutencaoModel = new Manutencao();
         manutencaoModel.setIdManutencao(manutencao.getObjectId("_id").toHexString());
         manutencaoModel.setIdVeiculo(manutencao.getString("idVeiculo"));
-        manutencaoModel.setDataAgendamento(manutencao.get("dataAgendamento", java.time.LocalDate.class));
-        manutencaoModel.setDataRealizacao(manutencao.get("dataRealizacao", java.time.LocalDate.class));
+        manutencaoModel.setDataAgendamento(manutencao.get("dataAgendamento", java.time.LocalDateTime.class));
+        manutencaoModel.setDataRealizacao(manutencao.get("dataRealizacao", java.time.LocalDateTime.class));
         manutencaoModel.setTipoManutencao(TipoManutencaoEnum.valueOf(manutencao.getString("tipoManutencao")));
         manutencaoModel.setDescricaoServico(manutencao.getString("descricaoServico"));
         manutencaoModel.setCusto(manutencao.getDouble("custo"));

@@ -21,6 +21,9 @@ public class ItemAdicionalContrato {
     private int quantidade;
     private String idContratoAluguel;
 
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
         return "Item ID: " + idItemAdicionalContrato +

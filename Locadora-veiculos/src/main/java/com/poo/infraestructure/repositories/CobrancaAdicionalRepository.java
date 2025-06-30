@@ -20,9 +20,11 @@ public class CobrancaAdicionalRepository implements IRepository<CobrancaAdiciona
     public CobrancaAdicionalRepository(ConfigMongoClient mongoClient, IImuttableMapper<CobrancaAdicional> mapper) {
         this.mongoClient = mongoClient;
         this.mapper = mapper;
-        this.mongoClient.connect();
     }
 
+    /** 
+     * @param cobrancaAdicional
+     */
     @Override
     public void Create(CobrancaAdicional cobrancaAdicional) {
         var collection = mongoClient.getCollection("CobrancasAdicionais");
@@ -40,6 +42,9 @@ public class CobrancaAdicionalRepository implements IRepository<CobrancaAdiciona
         collection.insertOne(document);
     }
 
+    /** 
+     * @param cobrancaAdicional
+     */
     @Override
     public void Update(CobrancaAdicional cobrancaAdicional) {
         var collection = mongoClient.getCollection("CobrancasAdicionais");
@@ -60,12 +65,19 @@ public class CobrancaAdicionalRepository implements IRepository<CobrancaAdiciona
         );
     }
 
+    /** 
+     * @param id
+     */
     @Override
     public void Delete(String id) {
         var collection = mongoClient.getCollection("CobrancasAdicionais");
         collection.deleteOne(new Document("_id", new ObjectId(id)));
     }
 
+    /** 
+     * @param id
+     * @return CobrancaAdicional
+     */
     @Override
     public CobrancaAdicional GetById(String id) {
         var collection = mongoClient.getCollection("CobrancasAdicionais");
@@ -75,6 +87,9 @@ public class CobrancaAdicionalRepository implements IRepository<CobrancaAdiciona
         return null;
     }
 
+    /** 
+     * @return Iterable<CobrancaAdicional>
+     */
     @Override
     public Iterable<CobrancaAdicional> GetAll() {
         var collection = mongoClient.getCollection("CobrancasAdicionais");

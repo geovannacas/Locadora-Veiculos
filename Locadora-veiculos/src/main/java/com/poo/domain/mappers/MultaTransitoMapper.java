@@ -11,6 +11,10 @@ import java.time.LocalDateTime;
 
 @Component
 public class MultaTransitoMapper implements IImuttableMapper<MultaTransito> {
+    /** 
+     * @param multaTransito
+     * @return MultaTransito
+     */
     @Override
     public MultaTransito Map(Document multaTransito) {
         if (multaTransito == null) {

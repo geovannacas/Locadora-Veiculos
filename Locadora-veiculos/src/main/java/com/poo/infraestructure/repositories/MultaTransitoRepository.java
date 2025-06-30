@@ -20,9 +20,11 @@ public class MultaTransitoRepository implements IRepository<MultaTransito> {
     public MultaTransitoRepository(ConfigMongoClient mongoClient, IImuttableMapper<MultaTransito> mapper) {
         this.mongoClient = mongoClient;
         this.mapper = mapper;
-        this.mongoClient.connect();
     }
 
+    /** 
+     * @param multaTransito
+     */
     @Override
     public void Create(MultaTransito multaTransito) {
         var collection = mongoClient.getCollection("MultasTransito");
@@ -40,6 +42,9 @@ public class MultaTransitoRepository implements IRepository<MultaTransito> {
         collection.insertOne(document);
     }
 
+    /** 
+     * @param multaTransito
+     */
     @Override
     public void Update(MultaTransito multaTransito) {
         var collection = mongoClient.getCollection("MultasTransito");
@@ -60,12 +65,19 @@ public class MultaTransitoRepository implements IRepository<MultaTransito> {
         );
     }
 
+    /** 
+     * @param id
+     */
     @Override
     public void Delete(String id) {
         var collection = mongoClient.getCollection("MultasTransito");
         collection.deleteOne(new Document("_id", new ObjectId(id)));
     }
 
+    /** 
+     * @param id
+     * @return MultaTransito
+     */
     @Override
     public MultaTransito GetById(String id) {
         var collection = mongoClient.getCollection("MultasTransito");
@@ -75,6 +87,9 @@ public class MultaTransitoRepository implements IRepository<MultaTransito> {
         return null;
     }
 
+    /** 
+     * @return Iterable<MultaTransito>
+     */
     @Override
     public Iterable<MultaTransito> GetAll() {
         var collection = mongoClient.getCollection("MultasTransito");

@@ -7,6 +7,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ItemAdicionalMapper implements IImuttableMapper<ItemAdicionalContrato> {
+    /** 
+     * @param itemAdicional
+     * @return ItemAdicionalContrato
+     */
     public ItemAdicionalContrato Map(Document itemAdicional) {
         if (itemAdicional == null) {
             return null;

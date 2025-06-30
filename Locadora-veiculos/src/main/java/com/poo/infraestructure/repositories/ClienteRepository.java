@@ -20,9 +20,11 @@ public class ClienteRepository implements IRepository<Cliente> {
     public ClienteRepository(ConfigMongoClient mongoClient, IImuttableMapper<Cliente> mapper) {
         this.mongoClient = mongoClient;
         this.mapper = mapper;
-        this.mongoClient.connect();
     }
 
+    /** 
+     * @param cliente
+     */
     @Override
     public void Create(Cliente cliente) {
         var collection = mongoClient.getCollection("Clientes");
@@ -37,6 +39,9 @@ public class ClienteRepository implements IRepository<Cliente> {
         collection.insertOne(document);
     }
 
+    /** 
+     * @param cliente
+     */
     @Override
     public void Update(Cliente cliente) {
         var collection = mongoClient.getCollection("Clientes");
@@ -54,12 +59,19 @@ public class ClienteRepository implements IRepository<Cliente> {
         );
     }
 
+    /** 
+     * @param id
+     */
     @Override
     public void Delete(String id) {
         var collection = mongoClient.getCollection("Clientes");
         collection.deleteOne(new Document("_id", new ObjectId(id)));
     }
 
+    /** 
+     * @param id
+     * @return Cliente
+     */
     @Override
     public Cliente GetById(String id) {
         var collection = mongoClient.getCollection("Clientes");
@@ -69,6 +81,9 @@ public class ClienteRepository implements IRepository<Cliente> {
         return null;
     }
 
+    /** 
+     * @return Iterable<Cliente>
+     */
     @Override
     public Iterable<Cliente> GetAll() {
         var collection = mongoClient.getCollection("Clientes");

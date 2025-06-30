@@ -20,9 +20,11 @@ public class ManutencaoRepository implements IRepository<Manutencao> {
     public ManutencaoRepository(ConfigMongoClient mongoClient, IImuttableMapper<Manutencao> mapper) {
         this.mongoClient = mongoClient;
         this.mapper = mapper;
-        this.mongoClient.connect();
     }
 
+    /** 
+     * @param manutencao
+     */
     @Override
     public void Create(Manutencao manutencao) {
         var collection = mongoClient.getCollection("Manutencoes");
@@ -37,6 +39,9 @@ public class ManutencaoRepository implements IRepository<Manutencao> {
         collection.insertOne(document);
     }
 
+    /** 
+     * @param manutencao
+     */
     @Override
     public void Update(Manutencao manutencao) {
         var collection = mongoClient.getCollection("Manutencoes");
@@ -54,12 +59,19 @@ public class ManutencaoRepository implements IRepository<Manutencao> {
         );
     }
 
+    /** 
+     * @param id
+     */
     @Override
     public void Delete(String id) {
         var collection = mongoClient.getCollection("Manutencoes");
         collection.deleteOne(new Document("_id", new ObjectId(id)));
     }
 
+    /** 
+     * @param id
+     * @return Manutencao
+     */
     @Override
     public Manutencao GetById(String id) {
         var collection = mongoClient.getCollection("Manutencoes");
@@ -69,6 +81,9 @@ public class ManutencaoRepository implements IRepository<Manutencao> {
         return null;
     }
 
+    /** 
+     * @return Iterable<Manutencao>
+     */
     @Override
     public Iterable<Manutencao> GetAll() {
         var collection = mongoClient.getCollection("Manutencoes");

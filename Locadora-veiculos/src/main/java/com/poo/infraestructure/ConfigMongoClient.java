@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class ConfigMongoClient {
 
-    @Value("${MONGODB_CONN}")
+    @Value("mongodb+srv://geovannacunha:Utft7V3ZEAYaDCDz@gestao-locadora.ih5iyzd.mongodb.net/?retryWrites=true&w=majority")
     private String connectionString;
 
-    @Value("${MONGODB_DB_NAME}")
+    @Value("Gestao-Locadora")
     private String databaseName;
 
     private MongoClient mongoClient;
@@ -22,6 +22,9 @@ public class ConfigMongoClient {
         }
     }
 
+    /** 
+     * @return MongoClient
+     */
     public MongoClient getMongoClient() {
         if (mongoClient == null) {
             connect();
@@ -29,6 +32,10 @@ public class ConfigMongoClient {
         return mongoClient;
     }
 
+    /** 
+     * @param collectionName
+     * @return MongoCollection<Document>
+     */
     public MongoCollection<Document> getCollection(String collectionName) {
         MongoDatabase database = getMongoClient().getDatabase(databaseName);
         return database.getCollection(collectionName, Document.class);

@@ -8,6 +8,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class FuncionarioMapper implements IImuttableMapper<Funcionario> {
+    /** 
+     * @param funcionario
+     * @return Funcionario
+     */
     @Override
     public Funcionario Map(Document funcionario) {
         if (funcionario == null) {

@@ -11,6 +11,10 @@ import java.time.LocalDateTime;
 
 @Component
 public class CobrancaAdicionalMapper implements IImuttableMapper<CobrancaAdicional> {
+    /** 
+     * @param cobrancaAdicional
+     * @return CobrancaAdicional
+     */
     @Override
     public CobrancaAdicional Map(Document cobrancaAdicional) {
         if (cobrancaAdicional == null) {

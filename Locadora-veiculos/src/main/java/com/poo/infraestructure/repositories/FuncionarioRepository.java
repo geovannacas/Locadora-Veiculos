@@ -20,9 +20,11 @@ public class FuncionarioRepository implements IRepository<Funcionario> {
     public FuncionarioRepository(ConfigMongoClient mongoClient, IImuttableMapper<Funcionario> mapper) {
         this.mongoClient = mongoClient;
         this.mapper = mapper;
-        this.mongoClient.connect();
     }
 
+    /** 
+     * @param funcionario
+     */
     @Override
     public void Create(Funcionario funcionario) {
         var collection = mongoClient.getCollection("Funcionarios");
@@ -38,6 +40,9 @@ public class FuncionarioRepository implements IRepository<Funcionario> {
         collection.insertOne(document);
     }
 
+    /** 
+     * @param funcionario
+     */
     @Override
     public void Update(Funcionario funcionario) {
         var collection = mongoClient.getCollection("Funcionarios");
@@ -56,12 +61,19 @@ public class FuncionarioRepository implements IRepository<Funcionario> {
         );
     }
 
+    /** 
+     * @param id
+     */
     @Override
     public void Delete(String id) {
         var collection = mongoClient.getCollection("Funcionarios");
         collection.deleteOne(new Document("_id", new ObjectId(id)));
     }
 
+    /** 
+     * @param id
+     * @return Funcionario
+     */
     @Override
     public Funcionario GetById(String id) {
         var collection = mongoClient.getCollection("Funcionarios");
@@ -71,6 +83,9 @@ public class FuncionarioRepository implements IRepository<Funcionario> {
         return null;
     }
 
+    /** 
+     * @return Iterable<Funcionario>
+     */
     @Override
     public Iterable<Funcionario> GetAll() {
         var collection = mongoClient.getCollection("Funcionarios");

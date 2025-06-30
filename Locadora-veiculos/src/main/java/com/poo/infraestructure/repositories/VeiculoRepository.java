@@ -21,9 +21,11 @@ public class VeiculoRepository implements IRepository<Veiculo> {
     public VeiculoRepository(ConfigMongoClient mongoClient, IImuttableMapper<Veiculo> mapper) {
         this.mongoClient = mongoClient;
         this.mapper = mapper;
-        this.mongoClient.connect();
     }
 
+    /** 
+     * @param veiculo
+     */
     @Override
     public void Create(Veiculo veiculo) {
         var collection = mongoClient.getCollection("Veiculos");
@@ -39,6 +41,9 @@ public class VeiculoRepository implements IRepository<Veiculo> {
         collection.insertOne(document);
     }
 
+    /** 
+     * @param veiculo
+     */
     @Override
     public void Update(Veiculo veiculo) {
         var collection = mongoClient.getCollection("Veiculos");
@@ -57,12 +62,19 @@ public class VeiculoRepository implements IRepository<Veiculo> {
         );
     }
 
+    /** 
+     * @param id
+     */
     @Override
     public void Delete(String id) {
         var collection = mongoClient.getCollection("Veiculos");
         collection.deleteOne(new Document("_id", new ObjectId(id)));
     }
 
+    /** 
+     * @param id
+     * @return Veiculo
+     */
     @Override
     public Veiculo GetById(String id) {
         var collection = mongoClient.getCollection("Veiculos");
@@ -72,6 +84,9 @@ public class VeiculoRepository implements IRepository<Veiculo> {
         return null;
     }
 
+    /** 
+     * @return Iterable<Veiculo>
+     */
     @Override
     public Iterable<Veiculo> GetAll() {
         var collection = mongoClient.getCollection("Veiculos");

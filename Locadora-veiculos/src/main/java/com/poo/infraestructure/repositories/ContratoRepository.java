@@ -21,9 +21,11 @@ public class ContratoRepository implements IRepository<Contrato> {
     public ContratoRepository(ConfigMongoClient mongoClient, IImuttableMapper<Contrato> mapper) {
         this.mongoClient = mongoClient;
         this.mapper = mapper;
-        this.mongoClient.connect();
     }
 
+    /** 
+     * @param contrato
+     */
     public void Create(Contrato contrato) {
         var collection = mongoClient.getCollection("Contratos");
         Document document = new Document()
@@ -39,6 +41,9 @@ public class ContratoRepository implements IRepository<Contrato> {
         collection.insertOne(document);
     }
 
+    /** 
+     * @param contrato
+     */
     public void Update(Contrato contrato) {
         var collection = mongoClient.getCollection("Contratos");
         Document document = new Document()
@@ -57,11 +62,18 @@ public class ContratoRepository implements IRepository<Contrato> {
         );
     }
 
+    /** 
+     * @param id
+     */
     public void Delete(String id) {
         var collection = mongoClient.getCollection("Contratos");
         collection.deleteOne(new Document("_id", new ObjectId(id)));
     }
 
+    /** 
+     * @param id
+     * @return Contrato
+     */
     public Contrato GetById(String id) {
         var collection = mongoClient.getCollection("Contratos");
         if (collection != null) {
@@ -70,6 +82,9 @@ public class ContratoRepository implements IRepository<Contrato> {
         return null;
     }
 
+    /** 
+     * @return Iterable<Contrato>
+     */
     public Iterable<Contrato> GetAll() {
         var collection = mongoClient.getCollection("Contratos");
         if (collection != null) {

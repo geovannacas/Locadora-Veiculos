@@ -27,15 +27,25 @@ public class MultaTransito {
     private LocalDate dataNotificacaoLocadora;
     private String descricaoInfracao;
     private String orgaoAutuador;
-    private double valorOriginalMulta;
+    private Double valorOriginalMulta;
     private StatusMultaEnum statusMulta;
 
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
-        return "Multa ID: " + idMulta +
-                "\nVeículo ID: " + idVeiculo +
-                "\nContrato ID: " + (idContratoAluguel != null ? idContratoAluguel : "N/A") +
-                "\nValor: R$ " + String.format("%.2f", valorOriginalMulta) +
-                "\nStatus: " + statusMulta;
+        return "MultaTransito{" +
+                "idMulta='" + idMulta + '\'' +
+                ", idVeiculo='" + idVeiculo + '\'' +
+                ", idContratoAluguel='" + (idContratoAluguel != null ? idContratoAluguel : "N/A") + '\'' +
+                ", codigoNotificacao='" + codigoNotificacao + '\'' +
+                ", dataOcorrenciaInfracao=" + dataOcorrenciaInfracao +
+                ", dataNotificacaoLocadora=" + dataNotificacaoLocadora +
+                ", descricaoInfracao='" + descricaoInfracao + '\'' +
+                ", orgaoAutuador='" + orgaoAutuador + '\'' +
+                ", valorOriginalMulta=" + String.format("%.2f", valorOriginalMulta) +
+                ", statusMulta=" + statusMulta +
+                '}';
     }
 }

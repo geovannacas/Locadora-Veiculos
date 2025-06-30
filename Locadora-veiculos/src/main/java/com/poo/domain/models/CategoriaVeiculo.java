@@ -20,13 +20,16 @@ public class CategoriaVeiculo {
     private String descricao;
     private double valorDiariaBase;
 
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
         return "CategoriaVeiculo{" +
                 "id='" + id + '\'' +
                 ", nome='" + nome + '\'' +
                 ", descricao='" + descricao + '\'' +
-                ", valorDiariaBase=" + valorDiariaBase +
+                ", valorDiariaBase= R$ " + valorDiariaBase +
                 '}';
     }
 }

@@ -25,11 +25,14 @@ public class CobrancaAdicional {
     private String idMultaTransito;
     private TipoCobrancaEnum tipoCobranca;
     private String descricaoDetalhada;
-    private double valorCobrado;
+    private Double valorCobrado;
     private LocalDateTime dataEmissaoCobranca;
     private LocalDateTime dataVencimentoPagamento;
     private StatusCobrancaEnum statusCobranca;
 
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
         return "CobrancaAdicional{" +
@@ -37,12 +40,12 @@ public class CobrancaAdicional {
                 ", idContrato='" + idContrato + '\'' +
                 ", idManutencao='" + idManutencao + '\'' +
                 ", idMultaTransito='" + idMultaTransito + '\'' +
-                ", tipoCobranca=" + tipoCobranca +
+                ", tipoCobranca=" + (tipoCobranca != null ? tipoCobranca.name() : null) +
                 ", descricaoDetalhada='" + descricaoDetalhada + '\'' +
                 ", valorCobrado=" + valorCobrado +
-                ", dataEmissaoCobranca=" + dataEmissaoCobranca +
-                ", dataVencimentoPagamento=" + dataVencimentoPagamento +
-                ", statusCobranca=" + statusCobranca +
+                ", dataEmissaoCobranca=" + (dataEmissaoCobranca != null ? dataEmissaoCobranca.toString() : null) +
+                ", dataVencimentoPagamento=" + (dataVencimentoPagamento != null ? dataVencimentoPagamento.toString() : null) +
+                ", statusCobranca=" + (statusCobranca != null ? statusCobranca.name() : null) +
                 '}';
     }
 }

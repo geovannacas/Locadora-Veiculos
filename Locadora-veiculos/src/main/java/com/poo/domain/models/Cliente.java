@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @NoArgsConstructor
@@ -20,9 +19,12 @@ public class Cliente extends Pessoa {
     private String cnh;
     private String endereco;
 
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
-        return "Cliente{" +
+        return "Cliente {" +
                 "id='" + getId() + '\'' +
                 ", nome='" + getNome() + '\'' +
                 ", email='" + getEmail() + '\'' +

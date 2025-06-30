@@ -20,9 +20,11 @@ public class ItemAdicionalContratoRepository implements IRepository<ItemAdiciona
     public ItemAdicionalContratoRepository(ConfigMongoClient mongoClient, IImuttableMapper<ItemAdicionalContrato> mapper) {
         this.mongoClient = mongoClient;
         this.mapper = mapper;
-        this.mongoClient.connect();
     }
 
+    /** 
+     * @param itemAdicionalContrato
+     */
     @Override
     public void Create(ItemAdicionalContrato itemAdicionalContrato) {
         var collection = mongoClient.getCollection("ItensAdicionaisContrato");
@@ -35,6 +37,9 @@ public class ItemAdicionalContratoRepository implements IRepository<ItemAdiciona
         collection.insertOne(document);
     }
 
+    /** 
+     * @param itemAdicionalContrato
+     */
     @Override
     public void Update(ItemAdicionalContrato itemAdicionalContrato) {
         var collection = mongoClient.getCollection("ItensAdicionaisContrato");
@@ -50,12 +55,19 @@ public class ItemAdicionalContratoRepository implements IRepository<ItemAdiciona
         );
     }
 
+    /** 
+     * @param id
+     */
     @Override
     public void Delete(String id) {
         var collection = mongoClient.getCollection("ItensAdicionaisContrato");
         collection.deleteOne(new Document("_id", new ObjectId(id)));
     }
 
+    /** 
+     * @param id
+     * @return ItemAdicionalContrato
+     */
     @Override
     public ItemAdicionalContrato GetById(String id) {
         var collection = mongoClient.getCollection("ItensAdicionaisContrato");
@@ -65,6 +77,9 @@ public class ItemAdicionalContratoRepository implements IRepository<ItemAdiciona
         return null;
     }
 
+    /** 
+     * @return Iterable<ItemAdicionalContrato>
+     */
     @Override
     public Iterable<ItemAdicionalContrato> GetAll() {
         var collection = mongoClient.getCollection("ItensAdicionaisContrato");

@@ -26,10 +26,33 @@ public class Contrato {
     private LocalDateTime dataHoraRetiradaReal;
     private LocalDateTime dataHoraDevolucaoReal;
     private double valorTotalPrevisto;
+    private double valorTotalPrevistoReal;
     private StatusContratoEnum statusContrato;
+    private int kmSaida;
+    private int kmEntrada;
+    private String idFuncionarioEntrada; // Relacionamento com Funcionario
+    private String idFuncionarioSaida; 
 
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
-        return "Contrato ID: " + idContrato + "\nCliente ID: " + idCliente + "\nVeículo ID: " + idVeiculo + "\nStatus: " + statusContrato;
+        return "Contrato {" +
+                "idContrato='" + idContrato + '\'' +
+                ", idCliente='" + idCliente + '\'' +
+                ", idVeiculo='" + idVeiculo + '\'' +
+                ", dataHoraRetiradaPrevista=" + dataHoraRetiradaPrevista +
+                ", dataHoraDevolucaoPrevista=" + dataHoraDevolucaoPrevista +
+                ", dataHoraRetiradaReal=" + dataHoraRetiradaReal +
+                ", dataHoraDevolucaoReal=" + dataHoraDevolucaoReal +
+                ", valorTotalPrevisto=" + valorTotalPrevisto +
+                ", valorTotalPrevistoReal=" + valorTotalPrevistoReal +
+                ", statusContrato=" + statusContrato +
+                ", kmSaida=" + kmSaida +
+                ", kmEntrada=" + kmEntrada +
+                ", idFuncionarioEntrada='" + idFuncionarioEntrada + '\'' +
+                ", idFuncionarioSaida='" + idFuncionarioSaida + '\'' +
+                '}';
     }
 }
